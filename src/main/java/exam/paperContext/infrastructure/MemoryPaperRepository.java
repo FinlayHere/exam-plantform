@@ -14,7 +14,7 @@ public class MemoryPaperRepository implements PaperRepository {
 
     @Override
     public Paper find(PaperId paperId) {
-        return papers.stream().filter(paper-> {
+        return papers.stream().filter(paper -> {
             return paper.getPaperId().equals(paperId);
         }).findFirst().orElseThrow(NullPointerException::new);
     }
@@ -32,5 +32,16 @@ public class MemoryPaperRepository implements PaperRepository {
     @Override
     public List<Paper> getAll() {
         return papers.stream().collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(String paperId) {
+
+        Optional<Paper> paperOpt = Optional.of(papers.stream()
+                .filter(paper -> paper.getPaperId().equals(paper.getPaperId()))
+                .findFirst()
+                .get());
+
+        paperOpt.ifPresent(paper -> papers.remove(paper));
     }
 }
