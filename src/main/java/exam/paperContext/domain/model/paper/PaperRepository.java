@@ -10,4 +10,6 @@ public interface PaperRepository {
     PaperId nextPaperId();
 
     List<Paper> getAll();
+
+    void deleteById(String paperId);
 }

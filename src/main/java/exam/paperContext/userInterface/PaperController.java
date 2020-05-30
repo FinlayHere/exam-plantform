@@ -38,4 +38,10 @@ public class PaperController {
     void reassemble(@PathVariable String paperId, @RequestBody AssemblePaperCommand command) {
         paperService.reassemblePaper(paperId, command);
     }
+
+    @DeleteMapping("/papers/{paperId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void delete(@PathVariable String paperId){
+        paperService.deletePaper(paperId);
+    }
 }

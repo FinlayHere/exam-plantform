@@ -47,4 +47,8 @@ public class PaperService {
             return new BlankQuiz(quiz.getQuizId(), quiz.getScore());
         }).collect(Collectors.toList());
     }
+
+    public void deletePaper(String paperId) {
+        paperRepository.deleteById(paperId);
+    }
 }
